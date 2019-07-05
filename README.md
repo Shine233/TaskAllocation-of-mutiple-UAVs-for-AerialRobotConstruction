@@ -12,7 +12,7 @@ Centralized control system indicates that the group of UAVs (Unmanned Aerial Veh
 
 #### b. Mixed-Integer Linear Programming (MIP)
 
-#### c. Constaint Programming (CP)
+#### c. Constraint Programming (CP)
 
 #### d. Graph-based method
 
@@ -30,7 +30,7 @@ The common LS methods:
 `Artificial Immune (AI)`, `Tabu Search (TS)` and `Simulated Annealing Algorithm (SA)`
 
 ## 2. Distributed task allocation methods
-Distributed control system is different from Centralized control system in the way of signale transmission. The Distributed control system can allow UAVs communiated with each other in the group.
+Distributed control system is different from Centralized control system in the way of signal transmission. The Distributed control system can allow UAVs communicated with each other in the group.
 
 ### 2.1 ContractNet
 
