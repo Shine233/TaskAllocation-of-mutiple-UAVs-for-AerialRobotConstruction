@@ -43,7 +43,7 @@ This method is basically combine the first 2 methods. There is a centralized con
 ## 4. Further development methods
 ### 4.1 Task allocation under uncertain circumstances
 
-### 4.2 Task allocation for mutiple UAVs with different types
+### 4.2 Task allocation for multiple UAVs with different types
 
 ### 4.3 Dynamic real-time task assignment
 
