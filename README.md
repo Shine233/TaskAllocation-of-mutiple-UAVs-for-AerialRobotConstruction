@@ -50,18 +50,18 @@ This method is basically combine the first 2 methods. There is a centralized con
 ### 4.4 Static Game Theory
 
 ### 4.5 Dynamic Game Theory
+<br>  <br>  <br>  <br>  
+
+
+
+So far, the **Ant Colony Optimization (ACO)** Algorithm has been implemented. <br>  
 
 
 
 
-So far, the **Ant Colony Optimization (ACO)** Algorithm has been implemented.
 
 
-
-
-
-
-
+<br>  <br>  <br>  <br>  
 ## Reference：
 
 [1] Chen, Xia, and Yan-zhi Qiao. "Summary of unmanned aerial vehicle task allocation." Journal of Shenyang Aerospace University 33.6 (2016): 1-7.
