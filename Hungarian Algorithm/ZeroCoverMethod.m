@@ -9,6 +9,8 @@ row=unique(ind_row);
 col=unique(ind_col);
 minRandC = min(length(row),length(col));
 
+RowCoverNum=[];
+ColCoverNum=[];
 
 for i= 1: minRandC
     judge1 = 0;
