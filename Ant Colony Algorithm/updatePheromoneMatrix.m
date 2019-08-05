@@ -12,7 +12,7 @@ for i=1:worker_number
 end
 
 % The pheromone of best path increase
-sizeOf_best_ant_path=size(best_ant_path)
+sizeOf_best_ant_path=size(best_ant_path);
 [row,col]=find(best_ant_path==1);
 for i=1:sizeOf_best_ant_path(1)
       %pheromoneMatrix(best_ant_path(i,2),best_ant_path(i,1))=pheromoneMatrix(best_ant_path(i,2),best_ant_path(i,1))*q;
