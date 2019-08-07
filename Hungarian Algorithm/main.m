@@ -5,24 +5,26 @@ clear;
 % Define the position of the robots
 % % Robot_position=[1,2;1,4;1,6;1,8;1,10];
 % UAV_position=[5,7;3,2;7,13;6,9;5,5];
+UAV_position = [70,69;89,25;86,45];
 % % Define the target positions
 % Target_position=[3,6;5,4;5,6;5,8;8,6];
+Target_position = [80,63;22,49;61,40];
 
 % Random position
 UAV_number=3; % The number of UAVs
-task_number=8; % The number of Target positions
+task_number=3; % The number of Target positions
 SizeofMap = [1 100];
 size_UAV = 0;
 size_task = 0;
-
-while (size_UAV<UAV_number && size_task < task_number)
-    UAV_position = randi(SizeofMap,UAV_number,2);
-    Target_position = randi(SizeofMap,task_number,2);
-    % UAV_position = unique(UAV_position,'rows');
-    % Target_position = unique(Target_position,'rows');
-    size_UAV = size(unique(UAV_position,'rows'),1);
-    size_task = size(unique(Target_position,'rows'),1);
-end
+ 
+% while (size_UAV<UAV_number && size_task < task_number)
+%     UAV_position = randi(SizeofMap,UAV_number,2);
+%     Target_position = randi(SizeofMap,task_number,2);
+%     % UAV_position = unique(UAV_position,'rows');
+%     % Target_position = unique(Target_position,'rows');
+%     size_UAV = size(unique(UAV_position,'rows'),1);
+%     size_task = size(unique(Target_position,'rows'),1);
+% end
 
 
 % Initial the speed of UAVs

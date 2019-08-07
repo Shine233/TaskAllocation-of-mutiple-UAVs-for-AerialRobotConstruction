@@ -4,8 +4,9 @@ Best_Strategy_updated=Best_Strategy;
 
 if(UAV_number > task_number)
     for i = 1:size(Best_Strategy,1)
+        task_number_imme = task_number;
         for j = 1:size(Best_Strategy,2)
-            if(Best_Strategy(i,j) > task_number)
+            if(Best_Strategy(i,j) > task_number_imme)
                 %Best_Strategy_updated(i,j)=0;
                 Target_position(Best_Strategy(i,j),:) = UAV_position( j, :);
                 task_number=task_number+1;
