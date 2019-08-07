@@ -1,14 +1,14 @@
-function [ UAV_position_new, Target_position_new, task_number, count]= Draw_Strategy(UAV_position,...
+function [ UAV_position_new, Target_position_new, task_number, count]= Draw_Strategy_AntColony(UAV_position,...
     Target_position,best_path, SizeofMap, UAV_step,UAV_speed, task_number, count)
 
 UAV_position_original = UAV_position;
 Target_position_new = Target_position;
 for n = 1: size(best_path,1)
-    figure(n);
+    figure(1);
     
     plot(UAV_position(:,1), UAV_position(:,2),'bd');
     axis([SizeofMap SizeofMap]);
-    title("Multi-robot Task Allocation Based on Hungarian Algorithm");
+    title("Multi-robot Task Allocation Based on Ant Colony Algorithm");
     xlabel("X-direction of the map");
     ylabel("Y-direction of the map");
     %legend("Robots","Target positions", "Allocation Strategy");
