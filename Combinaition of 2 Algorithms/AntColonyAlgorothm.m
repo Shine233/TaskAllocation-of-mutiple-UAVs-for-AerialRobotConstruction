@@ -1,5 +1,5 @@
-function [ best_ant_path, min_dist] = AntColonyTaskAllocation(UAV_position,Target_position,UAV_number,UAV_speed,task_number,...
-    ant_num, iteratornum, maxT,task_fixed_number, ant_num_PP, iteratornum_PP)
+function [ best_ant_path] = AntColonyAlgorothm(UAV_position,Target_position,UAV_number,UAV_speed,task_number,...
+    ant_num, iteratornum, maxT,task_fixed_number)
 
 unfinishtask_number=task_number;
 pheromoneMatrix = [];% The matrix to store the pheromone
@@ -54,8 +54,7 @@ for i=1:iteratornum
     end
     % Find the best ant path in the stored information previously, and
     % record the corresponded travel distance of all UAVs
-    [best_ant_path, min_dist]=find_best_ant_path(all_ant_path,UAV_number,task_number,...
-        ant_num,UAV_position,Target_position,UAV_speed, ant_num_PP, iteratornum_PP);
+    [best_ant_path, min_dist(i)]=find_best_ant_path_realtime(all_ant_path,UAV_number,task_number,ant_num,UAV_position,Target_position,UAV_speed);
     
     % Update the pheromone matrix and others based on the best ant path
     pheromoneMatrix=updatePheromoneMatrix(best_ant_path, pheromoneMatrix,UAV_number,task_number);

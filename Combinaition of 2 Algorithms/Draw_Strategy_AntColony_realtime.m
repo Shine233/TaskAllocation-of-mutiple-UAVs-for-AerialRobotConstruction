@@ -3,7 +3,7 @@ function [ UAV_position_new, Target_position_new, task_number]= Draw_Strategy(UA
 UAV_position_original = UAV_position;
 Target_position_new = Target_position;
 for n = 1: size(best_path,1)
-    figure(n);
+    figure(3);
     
     plot(UAV_position(:,1), UAV_position(:,2),'bd');
     axis([SizeofMap SizeofMap]);

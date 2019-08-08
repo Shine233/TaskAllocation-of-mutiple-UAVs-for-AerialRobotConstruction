@@ -4,25 +4,25 @@ clear;
 
 % Define the position of the robots
 % % Robot_position=[1,2;1,4;1,6;1,8;1,10];
-UAV_position=[5,7;3,2;7,13;6,9;5,5];
+% UAV_position=[5,7;3,2;7,13;6,9;5,5];
 % % Define the target positions
-Target_position=[3,6;5,4;5,6;5,8;8,6];
+% Target_position=[3,6;5,4;5,6;5,8;8,6];
 
 % Random position
-UAV_number=5; % The number of UAVs
-task_number=5; % The number of Target positions
-SizeofMap = [1 15];
+UAV_number=4; % The number of UAVs
+task_number=15; % The number of Target positions
+SizeofMap = [1 500];
 size_UAV = 0;
 size_task = 0;
-% 
-% while (size_UAV<UAV_number && size_task < task_number)
-%     UAV_position = randi(SizeofMap,UAV_number,2);
-%     Target_position = randi(SizeofMap,task_number,2);
-%     % UAV_position = unique(UAV_position,'rows');
-%     % Target_position = unique(Target_position,'rows');
-%     size_UAV = size(unique(UAV_position,'rows'),1);
-%     size_task = size(unique(Target_position,'rows'),1);
-% end
+
+while (size_UAV<UAV_number && size_task < task_number)
+    UAV_position = randi(SizeofMap,UAV_number,2);
+    Target_position = randi(SizeofMap,task_number,2);
+    % UAV_position = unique(UAV_position,'rows');
+    % Target_position = unique(Target_position,'rows');
+    size_UAV = size(unique(UAV_position,'rows'),1);
+    size_task = size(unique(Target_position,'rows'),1);
+end
 
 % Initial the speed of UAVs
 UAV_speed=ones(UAV_number,1)*50;
@@ -131,7 +131,7 @@ while (isempty(Target_position) == 0)
     else
         judge = 0;
     end
-    
+end    
 %     task_number_imme = task_number;
 %     if (task_number_imme<UAV_number)
 %         for i = 1:size(Best_Strategy,1)
@@ -149,7 +149,7 @@ while (isempty(Target_position) == 0)
 % %             Target_position =[];
 % %         end
 %     end
-end
+% end
 %     % Start iteration
 %     for i=1:iteratornum
 %         best_ant_path=[]; % To find the best task allocation results in each iteration
