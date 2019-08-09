@@ -1,8 +1,10 @@
-function [time_cost]=AntColonyAlgorithmMethod_realtime(UAV_position,Target_position,UAV_number,UAV_speed,task_number,...
+function [time_cost,traveled_dis,min_time_travelled]=AntColonyAlgorithmMethod_realtime(UAV_position,Target_position,UAV_number,UAV_speed,task_number,...
     ant_num_TA, iteratornum_TA, maxT,task_fixed_number, SizeofMap)
 %% 
 tic;
 judge = 1;
+traveled_dis = 0;
+travelled_time = zeros(1,UAV_number);
 while (isempty(Target_position) == 0)
     
     if (judge == 1)
@@ -63,7 +65,8 @@ while (isempty(Target_position) == 0)
         end
     end
     
-    [UAV_position_new,Target_position_new,task_number] = Draw_Strategy_AntColony_realtime(UAV_position,Target_position,Best_Strategy, SizeofMap, UAV_step, UAV_speed, task_number);
+    [UAV_position_new,Target_position_new,task_number,traveled_dis,travelled_time] = Draw_Strategy_AntColony_realtime...
+        (UAV_position,Target_position,Best_Strategy, SizeofMap, UAV_step, UAV_speed, task_number, traveled_dis, travelled_time);
     if (isempty(Target_position_new) == 1)
         break;
     end
@@ -75,5 +78,6 @@ while (isempty(Target_position) == 0)
         judge = 0;
     end
 end    
+min_time_travelled = max(travelled_time);
 toc;
 time_cost = toc;

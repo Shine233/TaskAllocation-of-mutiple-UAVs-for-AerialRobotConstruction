@@ -1,4 +1,5 @@
-function [ UAV_position_new, Target_position_new, task_number]= Draw_Strategy_Hungrain(UAV_position,Target_position,best_path, SizeofMap, UAV_step,UAV_speed, task_number)
+function [ UAV_position_new, Target_position_new, task_number, traveled_dis, travelled_time]= Draw_Strategy_Hungrain(...
+    UAV_position,Target_position,best_path, SizeofMap, UAV_step,UAV_speed, task_number,traveled_dis,travelled_time)
 
 UAV_position_original = UAV_position;
 Target_position_new = Target_position;
@@ -31,10 +32,13 @@ for n = 1: size(best_path,1)
                 Target_position_new(Locb,:) = [];
                 task_number = task_number - 1;
                 % judge(j)=0;
-                
+                traveled_dis = traveled_dis + dist;
+                travelled_time(j) = travelled_time(j) + dist/UAV_speed(j);
             else
                 UAV_position_new(j,:)=UAV_position(j,:)+UAV_step(j,:,n);
                 task_number = task_number;
+                traveled_dis = traveled_dis + UAV_speed(j);
+                travelled_time(j) = travelled_time(j) + 1;
             end
 %             if (UAV_step(j,1) >0 && sign(Target_position(j,1)-UAV_position_new(j,1)) <= 0)
 %                 UAV_position_new(j,:)=Target_position(j,:);

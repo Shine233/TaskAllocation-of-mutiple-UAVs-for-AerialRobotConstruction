@@ -1,4 +1,4 @@
-function [Shortest_Route, Shortest_Length] = AntColonyPathPlanning (Map, ant_num_PP, iteratornum_PP, Speed)
+function [Shortest_Route, Shortest_Length, Shortest_Time] = AntColonyPathPlanning (Map, ant_num_PP, iteratornum_PP, Speed)
 
 % ant_num_PP=50;%% m 蚂蚁个数  
 Alpha=1;%% Alpha 表征信息素重要程度的参数  
@@ -65,19 +65,23 @@ while NC<=iteratornum_PP        %停止条件之一：达到最大迭代次数，停止
         Tabu(1,:)=R_best(NC-1,:);  
     end  
     %%第四步：记录本次迭代最佳路线  
-    L=zeros(ant_num_PP,1);     %开始距离为0，m*1的列向量  
+    L=zeros(ant_num_PP,1);     %开始距离为0，m*1的列向量
+    time_used = zeros(ant_num_PP,1);
     for i=1:ant_num_PP  
         R=Tabu(i,:);  
         for j=1:(n-1)
             if (R(j+1) ~=1)
-                L(i)=L(i)+D(R(j),R(j+1))/Speed;    %原距离加上第j个城市到第j+1个城市的距离
+                L(i)=L(i)+D(R(j),R(j+1));%/Speed;    %原距离加上第j个城市到第j+1个城市的距离
+                time_used(i)= time_used(i)+D(R(j),R(j+1))/Speed;
             end
         end 
         if (R(1) ~=1)
-            L(i)=L(i)+D(R(1),R(n))/Speed;      %一轮下来后走过的距离 
+            L(i)=L(i)+D(R(1),R(n));%/Speed;      %一轮下来后走过的距离
+            time_used(i)=time_used(i)+D(R(1),R(n))/Speed;
         end
     end  
     L_best(NC)=min(L);           %最佳距离取最小  
+    Time_best(NC)=min(time_used); 
     pos=find(L==L_best(NC));  
     R_best(NC,:)=Tabu(pos(1),:); %此轮迭代后的最佳路线  
     L_ave(NC)=mean(L);           %此轮迭代后的平均距离  
@@ -101,3 +105,4 @@ end
 Pos=find(L_best==min(L_best)); %找到最佳路径（非0为真）  
 Shortest_Route=R_best(Pos(1),:); %最大迭代次数后最佳路径  
 Shortest_Length=L_best(Pos(1)); %最大迭代次数后最短距离 
+Shortest_Time = Time_best(Pos(1));

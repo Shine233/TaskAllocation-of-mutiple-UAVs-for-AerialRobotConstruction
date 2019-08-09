@@ -1,8 +1,9 @@
-function [best_ant_path,min_distance] = find_best_ant_path(all_ant_path,worker_number,task_number,...
+function [best_ant_path,min_distance,min_time] = find_best_ant_path(all_ant_path,worker_number,task_number,...
     ant_num,Robot_position,Target_position, UAV_speed, ant_num_PP, iteratornum_PP)
 
 % Define the calculated distance
 SumOfDistance=zeros(ant_num,1);
+SumOfTimeUsed = zeros(ant_num,worker_number);
 
 % Calculate the distance between robots and targets positions, and then
 % compare them to find the best task allocation strategy
@@ -24,8 +25,9 @@ for i=1:ant_num
         for k = 2 : (SizeOfSubMap+1)
             Map(k,:) = Target_position( row(UAV_contained(k-1)),:);
         end
-        [Shortest_Route, Shortest_Length] = AntColonyPathPlanning (Map, ant_num_PP, iteratornum_PP, UAV_speed(j));
+        [Shortest_Route, Shortest_Length,travelled_time] = AntColonyPathPlanning (Map, ant_num_PP, iteratornum_PP, UAV_speed(j));
         SumOfDistance(i) = SumOfDistance(i) + Shortest_Length;
+        SumOfTimeUsed(i,j) = SumOfTimeUsed(i,j) + travelled_time;
         Map = [];
     end
     %ite= ite+1;
@@ -38,6 +40,7 @@ if (isempty(min_distance) == 0)
     index=find(SumOfDistance==min_distance);
     %display(index)
     choice = index(unidrnd(size(index,1)));
+    min_time = SumOfTimeUsed(choice,:);
     %display(choice);
     best_ant_path = all_ant_path((choice-1)*task_number+1:(choice-1)*task_number+task_number,:);
 end

@@ -1,11 +1,13 @@
-function [time_cost, min_dist]=AntColonyAlgorithmMethod(UAV_position,Target_position,UAV_number,UAV_speed,task_number,...
+function [time_cost, min_dist,min_time_travelled]=AntColonyAlgorithmMethod(UAV_position,Target_position,UAV_number,UAV_speed,task_number,...
     ant_num_TA, iteratornum_TA, maxT,task_fixed_number, ant_num_PP, iteratornum_PP, SizeofMap)
 %% 
 tic;
-[best_ant_path,min_dist] = AntColonyTaskAllocation(UAV_position,Target_position,UAV_number,UAV_speed,task_number,...
-    ant_num_TA, iteratornum_TA, maxT,task_fixed_number, ant_num_PP, iteratornum_PP);
+travelled_time = zeros(1,UAV_number);
+[best_ant_path,min_dist,travelled_time] = AntColonyTaskAllocation(UAV_position,Target_position,UAV_number,UAV_speed,task_number,...
+    ant_num_TA, iteratornum_TA, maxT,task_fixed_number, ant_num_PP, iteratornum_PP,travelled_time);
 toc;
 time_cost=toc;
+min_time_travelled = max(travelled_time);
 
 [row,col]=find(best_ant_path==1);
 
