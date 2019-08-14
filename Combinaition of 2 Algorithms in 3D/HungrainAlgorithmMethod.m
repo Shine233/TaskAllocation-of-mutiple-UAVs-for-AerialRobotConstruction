@@ -1,5 +1,5 @@
 function [time_cost, traveled_dis,min_time_travelled] = HungrainAlgorithmMethod(UAV_position,Target_position,UAV_number,UAV_speed,task_number,...
-    SizeofMap)
+    SizeofMap, Color)
 
 judge = 1;
 traveled_dis=0;
@@ -53,7 +53,8 @@ while (isempty(Target_position) == 0)
     %% Display the task allcocation strategy
     % test=zeros(3,2);
     [UAV_position_new,Target_position_new,task_number,traveled_dis,travelled_time] = Draw_Strategy_Hungrain(...
-        UAV_position,Target_position,Best_Strategy, SizeofMap, UAV_step, UAV_speed, task_number,traveled_dis,travelled_time);
+        UAV_position,Target_position,Best_Strategy, SizeofMap, UAV_step, UAV_speed, task_number,...
+        traveled_dis,travelled_time,Color);
     UAV_position = UAV_position_new;
     %Target_position = Target_position_new;
     

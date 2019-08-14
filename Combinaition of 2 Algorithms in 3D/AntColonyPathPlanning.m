@@ -1,4 +1,5 @@
-function [Shortest_Route, Shortest_Length, Shortest_Time] = AntColonyPathPlanning (Map, ant_num_PP, iteratornum_PP, Speed)
+function [Shortest_Route, Shortest_Length, Shortest_Time] = AntColonyPathPlanning...
+    (Map, ant_num_PP, iteratornum_PP, Speed,Map_index)
 
 % ant_num_PP=50;%% m 蚂蚁个数
 Alpha=1;%% Alpha 表征信息素重要程度的参数
@@ -118,4 +119,6 @@ if(isempty(Map)==0)
         part2 =  Shortest_Route(posi+1:end);
         Shortest_Route = [part2, part1];
     end
+    Shortest_Route = Shortest_Route -1;
+    Shortest_Route = Map_index(Shortest_Route);
 end
