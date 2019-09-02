@@ -11,14 +11,14 @@ for n = 1: size(best_path,1)
         hold on;
     end
     axis([SizeofMap SizeofMap SizeofMap]);
-    title("Multi-robot Task Allocation Based on Ant Colony Algorithm");
-    xlabel("X-direction of the map");
-    ylabel("Y-direction of the map");
-    zlabel("Z-direction of the map");
+    title("Multiple UAVs Task Allocation Based on Ant Colony Algorithm");
+    xlabel("X-direction of the map (m)");
+    ylabel("Y-direction of the map (m)");
+    zlabel("Z-direction of the map (m)");
     %legend("Robots","Target positions", "Allocation Strategy");
     
     for i = 1:size(Target_position,1)
-        plot3(Target_position(i,1), Target_position(i,2), Target_position(i,3), 'gx');
+        plot3(Target_position(i,1), Target_position(i,2), Target_position(i,3), 'rx');
     end
     pause(1)
     

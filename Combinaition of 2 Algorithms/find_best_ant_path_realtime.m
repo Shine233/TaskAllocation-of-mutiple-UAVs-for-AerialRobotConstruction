@@ -56,5 +56,37 @@ if (isempty(min_distance) ==0)
     choice = index(unidrnd(size(index,1)));
     %display(choice);
     best_ant_path = all_ant_path((choice-1)*task_number+1:(choice-1)*task_number+task_number,:);
+else
+    best_ant_path = zeros(task_number,worker_number);
+    if (task_number > worker_number)
+        ind1=randperm(task_number);
+        ind2=randperm(worker_number);
+        for i = worker_number+1:task_number
+            ind2(i) = randi(worker_number);
+            for i=1:task_number
+                best_ant_path(ind1(i),ind2(i)) = 1;
+            end
+        end
+        for i=1:task_number
+            best_ant_path(ind1(i),ind2(i)) = 1;
+        end
+    elseif (task_number == worker_number)
+        ind1=randperm(task_number);
+        ind2=randperm(worker_number);
+        for i=1:task_number
+            best_ant_path(ind1(i),ind2(i)) = 1;
+        end
+    elseif(task_number < worker_number)
+        ind1=randperm(task_number);
+        ind2=randperm(task_number);
+        for i=1:task_number
+            best_ant_path(ind1(i),ind2(i)) = 1;
+        end
+        
+    end
 end
+
+
+
 end
+

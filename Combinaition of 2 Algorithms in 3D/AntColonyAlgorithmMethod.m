@@ -12,12 +12,12 @@ min_time_travelled = max(travelled_time);
 Best_path(all(Best_path==0,2),:) = [];
 Best_Strategy_entire = Best_path;
 
-% [row,col]=find(best_ant_path==1);
-% 
-% for i = 1: UAV_number
-%     mid = find(col==i);
-%     possibility(i) =length(mid);
-% end
+[row,col]=find(best_ant_path==1);
+
+for i = 1: UAV_number
+    mid = find(col==i);
+    possibility(i) =length(mid);
+end
 % %
 % %         task_number_imme = task_number;
 % Best_Strategy_entire = zeros( max(possibility),UAV_number);
@@ -84,7 +84,7 @@ while (isempty (Target_position) == 0)
     
     for i = 1: size(count,2)
         if (count(i) >max(possibility))
-            count = max(possibility);
+            count(i) = max(possibility);
         end
     end
     

@@ -1,20 +1,25 @@
 function [ UAV_position_new, Target_position_new, task_number, travelled_dis, travelled_time]= Draw_Strategy_AntColony_realtime...
-    (UAV_position,Target_position,best_path, SizeofMap, UAV_step,UAV_speed, task_number,travelled_dis, travelled_time)
+    (UAV_position,Target_position,best_path, SizeofMap, UAV_step,UAV_speed, task_number,travelled_dis, travelled_time,Color,Target_position_original)
 
-UAV_position_original = UAV_position;
+
 Target_position_new = Target_position;
 for n = 1: size(best_path,1)
     figure(3);
     
-    plot(UAV_position(:,1), UAV_position(:,2),'bd');
+    for i = 1:size(UAV_position,1)
+        plot(UAV_position(i,1), UAV_position(i,2),'d','Color',Color(i,:));
+        hold on;
+    end
     axis([SizeofMap SizeofMap]);
-    title("Multi-robot Task Allocation Based on Ant Colony Algorithm");
-    xlabel("X-direction of the map");
-    ylabel("Y-direction of the map");
+    title("Multiple UAVs Task Allocation Based on Ant Colony Algorithm");
+    xlabel("X-direction of the map (m)");
+    ylabel("Y-direction of the map (m)");
     %legend("Robots","Target positions", "Allocation Strategy");
     hold on;
     
-    plot(Target_position(:,1), Target_position(:,2),'rx');
+    for i = 1:size(Target_position_original,1)
+        plot(Target_position_original(i,1), Target_position_original(i,2), 'rx');
+    end
     pause(1)
     
     % judge=ones(size(best_path,2),1);
@@ -24,7 +29,7 @@ for n = 1: size(best_path,1)
             + (UAV_position(j,2)-Target_position(best_path(n,j),2))^2);
             if (dist <= UAV_speed(j))
                 plot([UAV_position(j,1), Target_position(best_path(n,j),1)], ...
-                         [UAV_position(j,2), Target_position(best_path(n,j),2)],'g');
+                         [UAV_position(j,2), Target_position(best_path(n,j),2)],'--','Color',Color(j,:));
                 UAV_position(j,:)=Target_position(best_path(n,j),:);
                 UAV_position_new(j,:)=Target_position(best_path(n,j),:);
                
@@ -49,10 +54,12 @@ for n = 1: size(best_path,1)
 %             end
             
         end
-        plot(UAV_position_new(:,1), UAV_position_new(:,2),'bd');
+        for i = 1:size(UAV_position,1)
+            plot(UAV_position_new(i,1), UAV_position_new(i,2),'d','Color',Color(i,:));
+        end
         for i=1:size(best_path,2)
             plot([UAV_position(i,1), UAV_position_new(i,1)], ...
-                [UAV_position(i,2), UAV_position_new(i,2)],'g');
+                [UAV_position(i,2), UAV_position_new(i,2)],'--','Color',Color(i,:));
             %     plot([UAV_position(i,1), Target_position(best_path(n,i),1)], ...
             %             [UAV_position(i,2), Target_position(best_path(n,i),2)],'g');
         end

@@ -1,5 +1,5 @@
 function [ UAV_position_new, Target_position_new, task_number, travelled_dis, travelled_time]= Draw_Strategy_AntColony_realtime...
-    (UAV_position,Target_position,best_path, SizeofMap, UAV_step,UAV_speed, task_number,travelled_dis, travelled_time, Color)
+    (UAV_position,Target_position,best_path, SizeofMap, UAV_step,UAV_speed, task_number,travelled_dis, travelled_time, Color,Target_position_original)
 
 UAV_position_original = UAV_position;
 Target_position_new = Target_position;
@@ -11,15 +11,15 @@ for n = 1: size(best_path,1)
         hold on;
     end
     axis([SizeofMap SizeofMap SizeofMap]);
-    title("Multi-robot Task Allocation Based on Ant Colony Algorithm in Real Time");
-    xlabel("X-direction of the map");
-    ylabel("Y-direction of the map");
-    zlabel("Z-direction of the map");
+    title("Multiple UAVs Task Allocation Based on Ant Colony Algorithm in Real Time");
+    xlabel("X-direction of the map (m)");
+    ylabel("Y-direction of the map (m)");
+    zlabel("Z-direction of the map (m)");
     %legend("Robots","Target positions", "Allocation Strategy");
     hold on;
     
-    for i = 1:size(Target_position,1)
-        plot3(Target_position(i,1), Target_position(i,2), Target_position(i,3), 'gx');
+    for i = 1:size(Target_position_original,1)
+        plot3(Target_position_original(i,1), Target_position_original(i,2), Target_position_original(i,3), 'rx');
     end
     pause(1)
     

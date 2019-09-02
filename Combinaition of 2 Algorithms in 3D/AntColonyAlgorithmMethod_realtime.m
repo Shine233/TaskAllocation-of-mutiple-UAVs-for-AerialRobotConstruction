@@ -5,6 +5,7 @@ tic;
 judge = 1;
 traveled_dis = 0;
 travelled_time = zeros(1,UAV_number);
+Target_position_original = Target_position;
 while (isempty(Target_position) == 0)
     
     if (judge == 1)
@@ -69,7 +70,7 @@ while (isempty(Target_position) == 0)
 %     end
     
     [UAV_position_new,Target_position_new,task_number,traveled_dis,travelled_time] = Draw_Strategy_AntColony_realtime...
-        (UAV_position,Target_position,Best_Strategy, SizeofMap, UAV_step, UAV_speed, task_number, traveled_dis, travelled_time,Color);
+        (UAV_position,Target_position,Best_Strategy, SizeofMap, UAV_step, UAV_speed, task_number, traveled_dis, travelled_time,Color,Target_position_original);
     if (isempty(Target_position_new) == 1)
         break;
     end

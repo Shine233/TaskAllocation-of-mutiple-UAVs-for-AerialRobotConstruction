@@ -1,4 +1,5 @@
-function [Shortest_Route, Shortest_Length, Shortest_Time] = AntColonyPathPlanning (Map, ant_num_PP, iteratornum_PP, Speed)
+function [Shortest_Route, Shortest_Length, Shortest_Time] = AntColonyPathPlanning...
+    (Map, ant_num_PP, iteratornum_PP, Speed,Map_index)
 
 % ant_num_PP=50;%% m 蚂蚁个数  
 Alpha=1;%% Alpha 表征信息素重要程度的参数  
@@ -106,3 +107,18 @@ Pos=find(L_best==min(L_best)); %找到最佳路径（非0为真）
 Shortest_Route=R_best(Pos(1),:); %最大迭代次数后最佳路径  
 Shortest_Length=L_best(Pos(1)); %最大迭代次数后最短距离 
 Shortest_Time = Time_best(Pos(1));
+
+if(isempty(Map)==0)
+    posi = find(Shortest_Route==1);
+    if (posi ==1)
+        Shortest_Route(1)=[];
+    elseif (posi == length (Shortest_Route))
+        Shortest_Route(length (Shortest_Route))=[];
+    else
+        part1 =  Shortest_Route(1:posi-1);
+        part2 =  Shortest_Route(posi+1:end);
+        Shortest_Route = [part2, part1];
+    end
+    Shortest_Route = Shortest_Route -1;
+    Shortest_Route = Map_index(Shortest_Route);
+end
