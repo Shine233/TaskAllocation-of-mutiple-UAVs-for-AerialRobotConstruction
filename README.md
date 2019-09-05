@@ -38,7 +38,9 @@ Distributed control system is different from Centralized control system in the w
 `first  price  auctions`, `Dynamic role assignment`, `Trade robots`, `Murdoch`, `Demircf`, `M+`, etc. 
 
 ## 3. Hierarchical distributed task allocation methods
-This method is basically combine the first 2 methods. There is a centralized control system to control several UAV groups and for each group there is a distributed control system.
+This method is basically combine the first 2 methods. There is a centralized control system to control several UAV groups and for each group there is a distributed control system. The structure is shown below.
+
+![image](https://github.com/Shine233/TaskAllocation-of-mutiple-UAVs-for-AerialRobotConstruction/blob/master/Hierarchical_distributed.png)
 
 ## 4. Further development methods
 ### 4.1 Task allocation under uncertain circumstances
@@ -54,8 +56,11 @@ This method is basically combine the first 2 methods. There is a centralized con
 
 
 
-So far, the **Ant Colony Optimization (ACO)** Algorithm has been implemented. <br>  
+Finally, the **Ant Colony Optimization (ACO)** and **Hungarian Algorithm** have been implemented. <br>  
+<br>
+The simulated initial map in 2D and 3D are displayed, and the detailed results are indicated in subfloders.
 
+![image](https://github.com/Shine233/TaskAllocation-of-mutiple-UAVs-for-AerialRobotConstruction/blob/master/initial_map.png)
 
 
 
