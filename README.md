@@ -61,7 +61,7 @@ Finally, the **Ant Colony Optimization (ACO)** and **Hungarian Algorithm** have 
 The simulated initial map in 2D and 3D are displayed, and the detailed results are indicated in subfloders.
 
 ![image](https://github.com/Shine233/TaskAllocation-of-mutiple-UAVs-for-AerialRobotConstruction/blob/master/initial_map.png)
-
+![image](https://github.com/Shine233/TaskAllocation-of-mutiple-UAVs-for-AerialRobotConstruction/blob/master/initial_map-3d.png)
 
 
 
